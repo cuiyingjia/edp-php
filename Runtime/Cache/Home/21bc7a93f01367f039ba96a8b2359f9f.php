@@ -1,0 +1,81 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录EDP</title>
+    <meta name="apple-mobile-web-app-cable" content="yes"/><!-- 删除苹果默认的工具栏和菜单栏-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/><!--设置苹果的工具栏颜色 -->
+    <meta name="viewport" content="width=device-width,initial-scale-1,user-scalable=no"/>
+    <link rel="stylesheet" href="/Public/static/edp/css/myStyle.css">
+</head>
+<body>
+<header>
+    <img src="/Public/static/edp/imgs/header.png" alt="header">
+</header>
+<section class="login-container">
+    <div class="login-contant">
+        <div class="login-contant-item">
+            <div class="login-icon">&#xe600;</div>
+            <input type="number" placeholder="电话号码" id="mobile">
+        </div>
+        <div class="login-contant-item">
+            <div class="login-icon">&#xe736;</div>
+            <input type="password" placeholder="输入密码" id="pwd">
+        </div>
+        <input type='button' value="登录" class="login-login">
+        <div class="login-contant-item login-function">
+            <div><a href="<?php echo U('Edp/forget?');?>">找回密码</a></div>
+            <div><a href="<?php echo U('Edp/signup?');?>">注册账号</a></div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript" src="/Public/static/edp/js/jquery-3.1.1.min.js"></script>
+<script>
+    var isPhone=/^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/;
+    var isPwd=/^[0-9A-Za-z]{6,18}$/;
+    $('.login-login').click(function () {
+        $(".login-contant-item input").each(function (i,n) {
+            if(!$(n).val()){
+                if(i == 0){
+                    alert('手机号不能为空');
+                    return false;
+                }else if(i ==1){
+                    alert('密码不能为空');
+                    return false;
+                }
+            }
+        });
+
+        if(!isPhone.test($("#mobile").val())){
+            alert('手机号码格式错误');
+            return false;
+        }
+        if(!isPwd.test($("#pwd").val())){
+            alert('密码格式错误');
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: "<?php echo U('Edp/signin');?>",
+            dataType: 'json',
+            async: false,
+            data: {
+                mobile: $("#mobile").val(),
+                password:$("#pwd").val()
+            },
+            success: function(data){
+                if(data['status'] == 1){
+                    window.location.href="<?php echo U('Edp/logged');?>";
+                }
+                if(data['status'] == 0){
+                    alert(data['info']);
+                }
+            },
+            error:function (data) {
+                alert('ajax错误!');
+            }
+        });
+    })
+</script>
+</body>
+</html>
