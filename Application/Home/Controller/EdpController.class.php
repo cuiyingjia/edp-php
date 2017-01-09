@@ -285,8 +285,8 @@ class EdpController extends HomeController {
     protected function sendAuthCode($mobile,$type){//发送验证码
         $code = $this -> getAuthCode($mobile,$type);
 
-        $text="【重庆大学EDP】您的验证码是".$code;
-        $post_data=array('text'=>$text,'mobile'=>$mobile,'apikey' =>'9cdc4b0314171199079fd6c09d8eb34a');
+        $text="【XX】您的验证码是".$code;
+        $post_data=array('text'=>$text,'mobile'=>$mobile,'apikey' =>'XXX');
         $url = 'https://sms.yunpian.com/v2/sms/single_send.json';
         $ch = curl_init();
         /* 设置返回结果为流 */
@@ -351,7 +351,7 @@ class EdpController extends HomeController {
 
     protected function test(){
         $ch = curl_init();
-        $apikey = "9cdc4b0314171199079fd6c09d8eb34a";
+        $apikey = "XXX";//
         /* 设置返回结果为流 */
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         /* 设置超时时间*/

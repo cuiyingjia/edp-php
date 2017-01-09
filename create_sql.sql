@@ -212,7 +212,6 @@ CREATE TABLE `edp_auth_code` (
 LOCK TABLES `edp_auth_code` WRITE;
 /*!40000 ALTER TABLE `edp_auth_code` DISABLE KEYS */;
 
-
 /*!40000 ALTER TABLE `edp_auth_code` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -887,7 +886,7 @@ LOCK TABLES `edp_member` WRITE;
 
 INSERT INTO `edp_member` (`uid`, `nickname`, `sex`, `birthday`, `qq`, `score`, `login`, `reg_ip`, `reg_time`, `last_login_ip`, `last_login_time`, `status`)
 VALUES
-	(1,'admin',0,'0000-00-00','',10,21,0,1577944982,2130706433,1483078045,1),
+	(1,'admin',0,'0000-00-00','',10,22,0,1577944982,2130706433,1483943644,1),
 	(2,'edpuser',0,'0000-00-00','',10,3,0,0,2130706433,1482684840,-1),
 	(3,'useredp',0,'0000-00-00','',10,4,0,0,2130706433,1483077961,1);
 
@@ -1166,7 +1165,7 @@ LOCK TABLES `edp_ucenter_member` WRITE;
 
 INSERT INTO `edp_ucenter_member` (`id`, `username`, `password`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `status`)
 VALUES
-	(1,'admin','c78efe70d089ed6646b44374ef853274','edp@edp.com','',1577944982,2130706433,1483078045,2130706433,1577944982,1),
+	(1,'admin','bc0a98d07fab08e9f47ee1ff2af7593c','edp@edp.com','',1483943661,2130706433,1483943644,2130706433,1483943661,1),
 	(2,'edpuser','5eac103344597bdb3a2b43cbd2a5010d','admin@niuniubao.net','',1482673528,2130706433,1482684840,2130706433,1482673528,1),
 	(3,'useredp','bc0a98d07fab08e9f47ee1ff2af7593c','admin1@niuniubao.net','',1482684905,2130706433,1483077961,2130706433,1482684905,1);
 
